@@ -1,12 +1,20 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from core.drivers.driver_types.chrome_driver import ChromeDriver
 
 
 class DriverManager:
     driver = None
 
-    def create_driver(self):
-        options = webdriver.ChromeOptions()
-        print("in create_webdriver")
+    @classmethod
+    def init_driver(cls):
+        if cls.driver is None:
+            cls.driver = ChromeDriver().create_driver()
 
-        self.driver = webdriver.Chrome(service=Service(), options=options)
+        return cls.driver
+
+    @classmethod
+    def get_webdriver(cls):
+        return cls.driver
+
+    @classmethod
+    def quit_driver(cls):
+        cls.driver.quit()
