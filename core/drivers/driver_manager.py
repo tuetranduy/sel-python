@@ -6,7 +6,7 @@ class DriverManager:
     driver = None
 
     @classmethod
-    def init_driver(cls, config):
+    def init_driver(cls, browser):
 
         driver_mapping = {
             "chrome": ChromeDriver(),
@@ -14,7 +14,7 @@ class DriverManager:
         }
 
         if cls.driver is None:
-            cls.driver = driver_mapping[config.browser].create_driver()
+            cls.driver = driver_mapping[browser].create_driver()
 
         return cls.driver
 

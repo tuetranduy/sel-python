@@ -11,7 +11,7 @@ class Element:
     def __init__(self, locator: Tuple[By, str]):
         self._element = None
         self._locator = locator
-        self._driver = DriverManager.init_driver()
+        self._driver = DriverManager.get_webdriver()
 
     def element_to_be_visible(self):
         wait = WaitUtils(self._driver)
