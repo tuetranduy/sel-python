@@ -1,13 +1,20 @@
 from core.drivers.driver_types.chrome_driver import ChromeDriver
+from core.drivers.driver_types.firefox_driver import FirefoxDriver
 
 
 class DriverManager:
     driver = None
 
     @classmethod
-    def init_driver(cls):
+    def init_driver(cls, config):
+
+        driver_mapping = {
+            "chrome": ChromeDriver(),
+            "firefox": FirefoxDriver(),
+        }
+
         if cls.driver is None:
-            cls.driver = ChromeDriver().create_driver()
+            cls.driver = driver_mapping[config.browser].create_driver()
 
         return cls.driver
 

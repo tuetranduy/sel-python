@@ -2,8 +2,19 @@ import datetime
 import allure
 import pytest
 from allure_commons.types import AttachmentType
+from core.drivers.driver_manager import DriverManager
 
 from core.utils.driver_utils import DriverUtils
+
+
+@pytest.fixture(scope="function", autouse=True)
+def browser_setup():
+    DriverManager.init_driver(pytest.browser)
+    DriverUtils.maximize_window()
+    DriverUtils.open_url("https://demoqa.com/books")
+
+    yield
+    DriverManager.quit_driver()
 
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
