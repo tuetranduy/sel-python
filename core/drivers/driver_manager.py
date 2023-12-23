@@ -1,9 +1,11 @@
 from core.drivers.driver_types.chrome_driver import ChromeDriver
 from core.drivers.driver_types.firefox_driver import FirefoxDriver
+from selenium.webdriver import Chrome
+from selenium.webdriver import Firefox
 
 
 class DriverManager:
-    driver = None
+    driver: Chrome | Firefox = None
 
     @classmethod
     def init_driver(cls, browser):
