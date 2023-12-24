@@ -7,5 +7,5 @@ class BaseDriver():
         self._driver = None
 
     @abstractmethod
-    def create_driver(self):
+    def create_driver(self, args):
         pass

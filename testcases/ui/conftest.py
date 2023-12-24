@@ -1,15 +1,16 @@
 import datetime
+
 import allure
 import pytest
 from allure_commons.types import AttachmentType
-from core.drivers.driver_manager import DriverManager
 
+from core.drivers.driver_manager import DriverManager
 from core.utils.driver_utils import DriverUtils
 
 
 @pytest.fixture(scope="function", autouse=True)
 def browser_setup():
-    DriverManager.init_driver(pytest.browser)
+    DriverManager.init_driver(pytest.browser, pytest.args)
     DriverUtils.maximize_window()
     DriverUtils.open_url("https://demoqa.com/books")
 
@@ -25,7 +26,7 @@ def pytest_runtest_makereport(item, call):
     if call.when == "call":
         if report.failed:
             screenshot_path = "/test-result/screenshot/" + \
-                datetime.date.today().strftime("%Y-%m-%d_%H%M") + ".png"
+                              datetime.date.today().strftime("%Y-%m-%d_%H%M") + ".png"
             DriverUtils.save_screenshot(screenshot_path)
             allure.attach.file(
                 screenshot_path, attachment_type=AttachmentType.PNG)
