@@ -1,7 +1,8 @@
 import argparse
 import pytest
 
-arg_parser = argparse.ArgumentParser()
+from dotenv import load_dotenv
+
 
 
 def pytest_addoption(parser):
@@ -21,7 +22,6 @@ def pytest_configure(config):
     pytest.args = config.getoption("--args", "", True)
 
 
-# @pytest.fixture(scope='session', autouse=True)
-# def get_environement_info():
-#     EnvironmentInfo.get_environment_info(
-#         "resources/test_configuration/env_conf.json", pytest.test_env)
+@pytest.fixture(scope='session', autouse=True)
+def load_env_infor():
+    load_dotenv()
