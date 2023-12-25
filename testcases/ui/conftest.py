@@ -1,4 +1,5 @@
 import datetime
+import os
 
 import allure
 import pytest
@@ -12,7 +13,7 @@ from core.utils.driver_utils import DriverUtils
 def browser_setup():
     DriverManager.init_driver(pytest.browser, pytest.args)
     DriverUtils.maximize_window()
-    DriverUtils.open_url("https://demoqa.com/books")
+    DriverUtils.open_url(os.environ.get("BASE_URL"))
 
     yield
     DriverManager.quit_driver()
