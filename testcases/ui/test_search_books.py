@@ -4,11 +4,14 @@ import allure
 from pages.books_page import BooksPage
 
 
-class TestLogin:
+@allure.parent_suite('Demo Test')
+@allure.suite('Test search Book with parameterize')
+class TestSearchBook:
 
     @allure.title("Search book")
     @pytest.mark.smoke
-    def test_search_book(self):
+    @pytest.mark.parametrize("search_string", Book.get_list_book_from_json('resources/test_data/book_search.json','valid'))
+    def test_search_book(self, search_string):
 
         books_page = BooksPage()
 

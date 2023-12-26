@@ -4,7 +4,6 @@ import pytest
 from dotenv import load_dotenv
 
 
-
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store",
                      metavar="")
@@ -14,6 +13,7 @@ def pytest_addoption(parser):
                      help="Custom arguments",
                      metavar="")
 
+
 def pytest_configure(config):
     pytest.browser = config.getoption("--browser", "chrome", True)
     pytest.test_env = config.getoption("--test-env", "", True)
@@ -22,5 +22,4 @@ def pytest_configure(config):
 
 @pytest.fixture(scope='session', autouse=True)
 def load_env_infor():
-    if pytest.test_env is not None or not "":
-        load_dotenv(f"./core/resources/env/{pytest.test_env}.env")
+    load_dotenv(f"./core/resources/env/{pytest.test_env}.env")
