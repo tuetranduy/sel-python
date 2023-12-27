@@ -26,8 +26,7 @@ def pytest_runtest_makereport(item, call):
 
     if call.when == "call":
         if report.failed:
-            screenshot_path = "/test-result/screenshot/" + \
-                              datetime.date.today().strftime("%Y-%m-%d_%H%M") + ".png"
+            screenshot_path = "./test-result/screenshot/" + datetime.date.today().strftime("%Y-%m-%d_%H%M") + ".png"
             DriverUtils.save_screenshot(screenshot_path)
             allure.attach.file(
                 screenshot_path, attachment_type=AttachmentType.PNG)

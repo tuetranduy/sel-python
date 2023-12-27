@@ -2,6 +2,7 @@ from core.drivers.driver_manager import DriverManager
 from core.drivers.driver_types.chrome_driver import ChromeDriver
 from core.drivers.driver_types.firefox_driver import FirefoxDriver
 
+
 class DriverUtils:
 
     @classmethod
@@ -37,10 +38,6 @@ class DriverUtils:
 
     @classmethod
     def save_screenshot(cls, file):
-        """
-            :Usage:
-                selenium.save_screenshot('test-result/example.png')
-        """
         cls.get_driver().save_screenshot(file)
 
     @classmethod
