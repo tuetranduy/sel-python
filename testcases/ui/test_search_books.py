@@ -1,5 +1,6 @@
 import pytest
 import allure
+from models.Book import Book
 
 from pages.books_page import BooksPage
 
@@ -10,9 +11,9 @@ class TestSearchBook:
 
     @allure.title("Search book")
     @pytest.mark.smoke
-    @pytest.mark.parametrize("search_string", Book.get_list_book_from_json('resources/test_data/book_search.json','valid'))
-    def test_search_book(self, search_string):
+    @pytest.mark.parametrize("book", Book.get_list_book_from_json('core/resources/test_data/book_search.json','invalid'))
+    def test_search_book(self, book):
 
         books_page = BooksPage()
 
-        books_page.fill_search_input("test 123")
+        books_page.fill_search_input(book.book_name)

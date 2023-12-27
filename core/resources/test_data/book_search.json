@@ -1,1 +1,15 @@
-["book1", "book2", "book3", "book4", "book5"]
+{
+    "valid":[
+        {
+            "book_name":"Git Pocket Guide"
+        }
+    ],
+    "invalid":[
+        {
+            "book_name":"Abcd1234@"
+        },
+        {
+            "book_name":"Abcd1234@"
+        }
+    ]
+}

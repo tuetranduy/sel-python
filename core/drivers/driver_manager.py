@@ -27,3 +27,4 @@ class DriverManager:
     @classmethod
     def quit_driver(cls):
         cls.driver.quit()
+        cls.driver = None
