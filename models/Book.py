@@ -2,7 +2,7 @@ import json
 import os
 
 
-class Book():
+class Book:
     def __init__(self, book_name):
         self.book_name = book_name
 
