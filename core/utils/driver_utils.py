@@ -1,6 +1,4 @@
 from core.drivers.driver_manager import DriverManager
-from core.drivers.driver_types.chrome_driver import ChromeDriver
-from core.drivers.driver_types.firefox_driver import FirefoxDriver
 
 
 class DriverUtils:
