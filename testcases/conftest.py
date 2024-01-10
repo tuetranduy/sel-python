@@ -21,4 +21,4 @@ def pytest_configure(config):
 
 @pytest.fixture(scope='session', autouse=True)
 def load_env_infor():
-    load_dotenv(f"./core/resources/env/{pytest.test_env}.env")
+    load_dotenv(f"./resources/env/{pytest.test_env}.env")

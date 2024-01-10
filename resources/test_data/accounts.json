@@ -1,0 +1,18 @@
+{
+    "valid":[
+        {
+            "username":"tuetest",
+            "password": "Password11!"
+        }
+    ],
+    "invalid":[
+        {
+            "username":"tuetest123",
+            "password": "Password11!"
+        },
+        {
+            "username":"tuetest",
+            "password": "Password11"
+        }
+    ]
+}

@@ -13,16 +13,27 @@ class Element:
         self._locator = locator
         self._driver = DriverManager.get_webdriver()
 
-    def element_to_be_visible(self):
+    def wait_element_to_be_visible(self):
         wait = WaitUtils(self._driver)
         self._element = wait.web_driver_wait_default().until(
             EC.visibility_of_element_located((self._locator[0], self._locator[1])))
 
     def enter_text(self, text):
-        self.element_to_be_visible()
+        self.wait_element_to_be_visible()
         self._element.clear()
         self._element.send_keys(text)
 
-    def click(self, locator):
-        self.element_to_be_visible(locator)
+    def click(self):
+        self.wait_element_to_be_visible()
         self._element.click()
+
+    def is_element_displayed(self):
+        try:
+            self.wait_element_to_be_visible()
+            return True
+        except:
+            return False
+
+    def get_inner_html(self):
+        self.wait_element_to_be_visible()
+        return self._element.get_attribute("innerHTML").strip()
