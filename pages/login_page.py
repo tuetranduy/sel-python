@@ -9,6 +9,7 @@ class LoginPage(BasePage):
         super().__init__()
         self.username_input = Element((By.ID, "userName"))
         self.password_input = Element((By.ID, "password"))
+        self.error_message_lbl = Element((By.ID, "name"))
 
     def fill_login_information(self, username, password):
         self.username_input.enter_text(username)
@@ -16,3 +17,6 @@ class LoginPage(BasePage):
 
     def submit_login(self):
         self.login_btn.click()
+
+    def get_error_message(self):
+        return self.error_message_lbl.get_inner_html()
