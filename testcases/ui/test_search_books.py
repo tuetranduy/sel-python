@@ -12,7 +12,7 @@ class TestSearchBook:
 
     @allure.title("Search valid book")
     @pytest.mark.smoke
-    @pytest.mark.parametrize("book", Book.get_list_book_from_json('./resources/test_data/book_search.json', 'valid'))
+    @pytest.mark.parametrize("book", Book.get_list_book_from_json('./resources/test_data/books.json', 'valid'))
     def test_search_book_valid(self, book: Book):
         Report.report_step(f"Search book with valid name: {book.book_name}")
 
@@ -24,7 +24,7 @@ class TestSearchBook:
 
     @allure.title("Search invalid book")
     @pytest.mark.smoke
-    @pytest.mark.parametrize("book", Book.get_list_book_from_json('./resources/test_data/book_search.json', 'invalid'))
+    @pytest.mark.parametrize("book", Book.get_list_book_from_json('./resources/test_data/books.json', 'invalid'))
     def test_search_book_invalid(self, book):
 
         Report.report_step(f"Search book with invalid name: {book.book_name}")
