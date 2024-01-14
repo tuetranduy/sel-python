@@ -12,14 +12,12 @@ class ApiUtils:
         try:
             response = requests.get(url, params=params, headers=self._get_headers())
             response.raise_for_status()
-
-            return response.json()
-
         except requests.exceptions.HTTPError as errh:
             print(f"HTTP Error: {errh}")
         except requests.exceptions.RequestException as err:
             print(f"Request Exception: {err}")
-        return None
+
+        return {"data": response.json(), "status_code": response.status_code}
 
     def post(self, endpoint, data=None, json=None):
         url = f"{self.base_url}/{endpoint}"
@@ -27,41 +25,36 @@ class ApiUtils:
             response = requests.post(url, data=data, json=json, headers=self._get_headers())
             response.raise_for_status()
 
-            return response.json()
-
         except requests.exceptions.HTTPError as errh:
             print(f"HTTP Error: {errh}")
         except requests.exceptions.RequestException as err:
             print(f"Request Exception: {err}")
-        return None
+        
+        return {"data": response.json(), "status_code": response.status_code}
 
     def put(self, endpoint, data=None, json=None):
         url = f"{self.base_url}/{endpoint}"
         try:
             response = requests.put(url, data=data, json=json, headers=self._get_headers())
             response.raise_for_status()
-
-            return response.json()
-
         except requests.exceptions.HTTPError as errh:
             print(f"HTTP Error: {errh}")
         except requests.exceptions.RequestException as err:
             print(f"Request Exception: {err}")
-        return None
+        
+        return {"data": response.json(), "status_code": response.status_code}
 
     def delete(self, endpoint):
         url = f"{self.base_url}/{endpoint}"
         try:
             response = requests.delete(url, headers=self._get_headers())
             response.raise_for_status()
-
-            return response.json()
-
         except requests.exceptions.HTTPError as errh:
             print(f"HTTP Error: {errh}")
         except requests.exceptions.RequestException as err:
             print(f"Request Exception: {err}")
-        return None
+        
+        return {"data": response.json(), "status_code": response.status_code}
 
     def _get_headers(self):
         headers = {'Content-Type': 'application/json'}

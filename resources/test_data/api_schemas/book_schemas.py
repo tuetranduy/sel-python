@@ -1,6 +1,6 @@
 class BookSchemas:
 
-    book_schema = {
+    book_success_response_schema = {
         "isbn": str,
         "title": str,
         "subTitle": str,
@@ -9,5 +9,5 @@ class BookSchemas:
         "publisher": str,
         "pages": int,
         "description": str,
-        "website": str
+        "website": str,
     }
